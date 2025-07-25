@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Гайд для Образного Интуита</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #162a44;
+      --bg-block1: #eaf6fa;
+      --bg-block2: #e6f7f1;
+      --bg-block3: #fff6e5;
+      --bg-block4: #f3eaff;
+      --bg-block5: #ffe5f0;
+      --bg-block6: #e5f7ff;
+      --bg-block7: #f9ffe5;
+      --color-title: #222;
+      --color-text: #222;
+      --color-muted: #888;
+      --color-accent: #3b82f6;
+      --color-btn: linear-gradient(90deg, #ff6a00 0%, #ffb347 100%);
+      --color-btn-hover: linear-gradient(90deg, #ffb347 0%, #ff6a00 100%);
+      --color-btn-text: #fff;
+      --border-radius: 16px;
+      --shadow: 0 2px 16px 0 rgba(60,60,60,0.06);
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg-main);
+      color: var(--color-text);
+      font-family: 'Inter', Arial, sans-serif;
+      font-size: 18px;
+      line-height: 1.7;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    .container {
+      max-width: 650px;
+      margin: 0 auto;
+      padding: 32px 12px 48px 12px;
+      position: relative;
+      z-index: 2;
+    }
+    .main-block {
+      background: var(--bg-block1);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 28px;
+      padding: 28px 24px;
+      opacity: 1;
+      transform: none;
+      animation: none;
+    }
+    .block1 { background: var(--bg-block2); }
+    .block2 { background: var(--bg-block3); }
+    .block3 { background: var(--bg-block4); }
+    .block4 { background: var(--bg-block5); }
+    .block5 { background: var(--bg-block6); }
+    .block6 { background: var(--bg-block7); }
+    .block7 { background: #fffbe5; }
+    .block {
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 28px;
+      padding: 28px 24px;
+      opacity: 1;
+      transform: none;
+      animation: none;
+    }
+    .reviews-block {
+      background: #fffbe5;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+      padding: 22px 18px;
+      opacity: 1;
+      transform: none;
+      animation: none;
+    }
+    .author-block {
+      background: #f7f7fa;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      margin: 32px 0 18px 0;
+      padding: 18px 18px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      opacity: 1;
+      transform: none;
+      animation: none;
+    }
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .block:hover, .main-block:hover {
+      box-shadow: 0 8px 32px 0 rgba(0,0,0,0.12), var(--shadow);
+      background: rgba(255,255,255,0.98);
+      transform: none;
+    }
+    h1, h2, h3 {
+      color: #222;
+      text-shadow: none;
+    }
+    .cta-btn, .fixed-cta .cta-btn {
+      display: inline-block;
+      background: linear-gradient(90deg, #ff6a00 0%, #ffb347 100%);
+      color: var(--color-btn-text);
+      font-size: 1.18rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 32px;
+      padding: 20px 48px;
+      margin: 24px 0 0 0;
+      cursor: pointer;
+      box-shadow: 0 4px 24px 0 rgba(255,140,66,0.18), 0 0 32px 8px #ffb34799, 0 0 64px 16px #ff6a0099;
+      outline: none;
+      letter-spacing: 0.01em;
+      text-shadow: 0 2px 8px rgba(255,255,255,0.18);
+      font-family: 'Inter', Arial, sans-serif;
+      position: relative;
+      z-index: 2;
+      overflow: hidden;
+      animation: firePulse 1.2s infinite alternate;
+      transition: box-shadow 0.2s, background 0.2s, transform 0.1s;
+    }
+    .cta-btn:active { transform: scale(0.97); }
+    @keyframes firePulse {
+      0% { box-shadow: 0 0 32px 8px #ffb34799, 0 0 64px 16px #ff6a0099; }
+      100% { box-shadow: 0 0 48px 16px #ffb347cc, 0 0 80px 24px #ff6a00cc; }
+    }
+    .cta-btn::before, .cta-btn::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      pointer-events: none;
+      border-radius: 50%;
+      opacity: 0.7;
+      filter: blur(2px);
+      animation: fireWaves 1.6s infinite linear;
+    }
+    .cta-btn::before {
+      top: -28px;
+      width: 60px; height: 38px;
+      background: radial-gradient(ellipse at 50% 60%, #fffbe7 0%, #ffb347 60%, rgba(255,255,255,0.01) 100%);
+      opacity: 0.55;
+      animation-delay: 0s;
+    }
+    .cta-btn::after {
+      top: -18px;
+      width: 80px; height: 44px;
+      background: radial-gradient(ellipse at 50% 70%, #ffb347 0%, #ff6a00 60%, rgba(255,255,255,0.01) 100%);
+      opacity: 0.38;
+      animation-delay: 0.7s;
+    }
+    @keyframes fireWaves {
+      0% { transform: translateX(-50%) scaleY(1) scaleX(1); opacity: 0.7; }
+      20% { transform: translateX(-50%) scaleY(1.18) scaleX(1.05); opacity: 0.85; }
+      40% { transform: translateX(-50%) scaleY(1.25) scaleX(0.95); opacity: 0.7; }
+      60% { transform: translateX(-50%) scaleY(1.1) scaleX(1.1); opacity: 0.6; }
+      80% { transform: translateX(-50%) scaleY(1.22) scaleX(1.05); opacity: 0.8; }
+      100% { transform: translateX(-50%) scaleY(1) scaleX(1); opacity: 0.7; }
+    }
+    .cta-btn span { position: relative; z-index: 2; }
+    /* Прогресс-бар */
+    .progress-bar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #ff6a00 0%, #ffb347 100%);
+      z-index: 2000;
+      width: 0;
+      transition: width 0.2s;
+      animation: none;
+    }
+    /* Блок 'Сейчас смотрят' */
+    .watching-block {
+      background: rgba(30, 34, 64, 0.98);
+      border-radius: 14px;
+      color: #ffeab0;
+      font-size: 1.01rem;
+      margin-bottom: 18px;
+      padding: 12px 18px;
+      box-shadow: 0 2px 12px 0 rgba(255,180,80,0.08);
+      display: flex; align-items: center; gap: 10px;
+      animation: fadeInUp 1.2s 0.15s cubic-bezier(.4,0,.2,1) forwards;
+      opacity: 0; transform: translateY(40px);
+    }
+    .watching-dot {
+      width: 12px; height: 12px; border-radius: 50%; background: #ffb347; box-shadow: 0 0 8px 2px #ffb34799;
+      animation: watchingDotPulse 1.2s infinite alternate;
+    }
+    @keyframes watchingDotPulse {
+      0% { box-shadow: 0 0 8px 2px #ffb34799; }
+      100% { box-shadow: 0 0 16px 6px #ffb347cc; }
+    }
+    .block1 { background: var(--bg-block2); }
+    .block2 { background: var(--bg-block3); }
+    .block3 { background: var(--bg-block4); }
+    .block4 { background: var(--bg-block5); }
+    .block5 { background: var(--bg-block6); }
+    .block6 { background: var(--bg-block7); }
+    .block7 { background: #fffbe5; }
+    .block, .main-block {
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 28px;
+      padding: 28px 24px;
+      transition: box-shadow 0.3s;
+    }
+    h1 {
+      font-size: 2.1rem;
+      font-weight: 700;
+      margin: 0 0 18px 0;
+      color: var(--color-title);
+      letter-spacing: 0.01em;
+    }
+    .accent {
+      color: var(--color-accent);
+      font-weight: 700;
+    }
+    .desc {
+      font-size: 1.08rem;
+      margin-bottom: 16px;
+    }
+    ul, ol {
+      margin: 0 0 0 20px;
+      padding: 0;
+    }
+    li {
+      margin-bottom: 8px;
+    }
+    b, strong {
+      font-weight: 700;
+    }
+    em {
+      font-style: italic;
+    }
+    .brain-img, .guide-img {
+      display: block;
+      margin: 24px auto 24px auto;
+      max-width: 320px;
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px 0 rgba(60,60,60,0.07);
+      background: #fff;
+      padding: 0;
+    }
+    .author-block {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin: 32px 0 18px 0;
+    }
+    .author-photo {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 2px 8px 0 rgba(60,60,60,0.10);
+      border: 2px solid #e5e7eb;
+      background: #fff;
+    }
+    .author-sign {
+      color: var(--color-muted);
+      font-size: 1.02rem;
+      font-weight: 500;
+    }
+    .cta-btn:hover {
+      background: var(--color-btn-hover);
+      box-shadow: 0 8px 32px 0 rgba(255,140,66,0.28);
+      transform: scale(1.05);
+    }
+    /* Анимация появления */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Фиксированная кнопка на мобилках */
+    .fixed-cta {
+      display: none;
+      position: fixed;
+      left: 0; right: 0; bottom: 0;
+      z-index: 1000;
+      background: var(--color-btn);
+      box-shadow: 0 -2px 16px 0 rgba(255,140,66,0.13);
+      padding: 10px 0 10px 0;
+      text-align: center;
+      animation: slideUp 0.5s;
+    }
+    .fixed-cta .cta-btn {
+      margin: 0;
+      font-size: 1.08rem;
+      padding: 14px 18vw;
+      box-shadow: 0 2px 12px 0 rgba(255,140,66,0.18);
+    }
+    @keyframes slideUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+    /* Прогресс-бар чтения */
+    .progress-bar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #ff6a00 0%, #ffb347 100%);
+      z-index: 2000;
+      width: 0;
+      transition: width 0.2s;
+    }
+    /* Микроанимация кнопки */
+    .cta-btn.pulse {
+      animation: pulse 0.7s infinite alternate;
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 4px 24px 0 rgba(255,140,66,0.18); transform: scale(1); }
+      100% { box-shadow: 0 8px 32px 0 rgba(255,140,66,0.28); transform: scale(1.04); }
+    }
+    /* Улучшение читаемости */
+    body, .desc, .block, .main-block {
+      line-height: 1.8;
+      letter-spacing: 0.01em;
+    }
+    @media (max-width: 700px) {
+      .block, .main-block { margin-bottom: 18px; }
+      .desc { font-size: 1.01rem; }
+    }
+    @media (max-width: 430px) {
+      .block, .main-block { margin-bottom: 10px; }
+      .desc { font-size: 0.97rem; }
+    }
+    /* Отзывы */
+    .reviews-block {
+      background: #fffbe5;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+      padding: 22px 18px;
+    }
+    .review {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 16px;
+      font-size: 1.05rem;
+      color: #333;
+      padding-left: 0;
+      border-left: none;
+      transition: box-shadow 0.4s, transform 0.4s, background 0.4s;
+      background: #fffbe5;
+    }
+    .review-photo {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 2px 8px 0 rgba(60,60,60,0.10);
+      border: 2px solid #e5e7eb;
+      background: #fff;
+      flex-shrink: 0;
+    }
+    .review-animate {
+      transform: scale(1.04);
+      box-shadow: 0 4px 32px 0 #ffb34755, 0 0 0 2px #ffb34788;
+      background: #fffde7;
+    }
+    .review:last-child { margin-bottom: 0; }
+    .review-text {
+      font-size: 1.01rem;
+      color: #333;
+    }
+    .review-name {
+      font-weight: 700;
+      color: #b47b00;
+      font-size: 0.98rem;
+      margin-bottom: 2px;
+    }
+    #starCanvas {
+      position: fixed;
+      left: 0; top: 0; width: 100vw; height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+    }
+    #neuronCanvas {
+      position: fixed;
+      left: 0; top: 0; width: 100vw; height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="progressPercent" style="position:fixed;top:0;left:0;width:100vw;text-align:center;z-index:2100;font-size:1.13rem;font-weight:600;color:#fff;text-shadow:0 2px 8px #162a44;pointer-events:none;letter-spacing:0.01em;">Прогресс: 0%</div>
+  <canvas id="neuronCanvas"></canvas>
+  <div class="progress-bar" id="progressBar"></div>
+  <div class="container">
+    <h1 style="font-size:2.1rem;font-weight:700;margin-bottom:8px;color:#fff;letter-spacing:0.01em;text-align:center;">Твой психотип Образный Интуит</h1>
+    <div style="font-size:1.1rem;font-weight:400;color:#bfc9e6;text-align:center;margin-bottom:18px;">Время чтения — 2 минуты</div>
+    <div class="main-block fade-in">
+      <div class="desc"><span class="accent">📌 Важно!</span> <b>Прочитай до конца</b> — если хочешь наконец-то <b>ПОНЯТЬ СЕБЯ</b> и <b>включить мозг</b> на изучение языка <b>без сопротивления!</b></div>
+      <div class="desc">🙄 <b>Знакомо?</b> <b>Снова говоришь себе:</b> «Начну учить английский завтра», а через 10 минут уже листаешь ленту, смотришь рецепты, убегаешь от задач? <b>Ты не один</b> — и это не лень и не прокрастинация.</div>
+      <div class="desc"><b>Почему так происходит?</b> Твой мозг защищается от тех методов, которыми нас пичкали в школе: <em>«Сначала грамматика. Потом правила. Потом зубри».</em></div>
+      <div class="desc"><span class="accent">⛔ СТОП!</span> <b>Мы все разные.</b> Кому-то такие методы подходят, но точно не тебе!<br>🎯 <b>Существует 5 психотипов</b> — и твой <b>НЕ любит сухие схемы</b>.</div>
+    </div>
+    <img src="img1.jpg" alt="Мозг" class="brain-img fade-in">
+    <div class="block block1 fade-in">
+      <b>🧱 Ты — образный интуит. Что мешает тебе?</b>
+      <ul>
+        <li>❌ <b>Мозг блокирует информацию</b> без образа, эмоции и ритма</li>
+        <li>❌ <b>Универсальный план убивает мотивацию</b></li>
+        <li>❌ <b>«Так надо» и «Делай по плану» вызывают протест и выгорание</b></li>
+      </ul>
+      <div style="margin-top:10px;">🔸 <b>У тебя доминирует правое полушарие</b> — ты быстро загораешься, но так же быстро гаснешь.<br>Я говорю не с потолка — всё это я прошла на себе, как и ты сейчас проходишь.</div>
+    </div>
+    <div class="block block2 fade-in">
+      <b>Что я сделала?</b><br>
+      <b>Вместо репетиторов и школ языка</b> — обратилась к учёному по 🧠. Он разобрал мой тип мышления по косточкам и дал точный план! <b>И за 7 дней мой мозг начал впитывать язык как губка — ⚡️молниеносно, заговорила сразу</b>.<br>Вокруг все начали спрашивать, как и что. <b>Поняла, что у многих такая же проблема</b>, изучают язык не "своим" методом и мозг блокирует.
+    </div>
+    <div class="block block3 fade-in">
+      <b>И я ПРИНЯЛА САМОЕ ГЛАВНОЕ РЕШЕНИЕ В МОЕЙ ЖИЗНИ — делиться с миром гайдом, после которого ты скажешь:</b><br>
+      <span class="accent">«ВАУ, а что так можно было? Теперь всё легко!»</span> <b>Так говорят все, кто уже попробовал.</b><br>💡 <b>Гайд мы создавали вместе с тем самым учёным — и тест тоже!</b>
+    </div>
+    <div class="block block4 fade-in">
+      <b>Результат после гайда:</b><br>
+      <b>Не просто начнёшь говорить</b> — ты наконец перестанешь бояться и откладывать, и начнёшь впитывать язык с радостью.
+    </div>
+    <div class="block block5 fade-in">
+      <b>🎁 Итак, что внутри?</b><br>
+      <b>Без воды, кратко, чётко</b> — то, что ты за 30 минут схватишь моментально.
+      <ul>
+        <li>📅 <b>7-дневный чёткий план</b> — метод, после которого ты начнёшь говорить на любом языке уже через 7 дней!</li>
+        <li>👉 <b>Топ-3 нейро-секрета</b> для твоего типа мышления.</li>
+        <li>💥 <b>Один приём</b> — и мозг включится как часы при изучении языка.</li>
+        <li>⚙️ <b>5 хаков</b> — запоминай слова/фразы за 1 секунду.</li>
+        <li>⚡ <b>Главный ответ</b> на вопрос: что делать с мотивацией?</li>
+        <li>💝 <b>И бонусы для твоего мозга.</b></li>
+      </ul>
+      <div style="margin-top:10px;">И всё это — <b>по цене, которая точно не ударит по твоему бюджету.</b><br><span class="accent">499 ₽ 🔥 — мелочь, которая меняет всё.</span></div>
+      <div style="margin-top:10px; color:var(--color-accent); font-weight:700;">⏰<b>Цена по 499 ₽ — только пока идёт тестовый запуск.</b> Потом точно будет дороже. Не упусти момент!</div>
+      <div style="display:flex;justify-content:center;margin-top:18px;">
+        <a href="https://self.payanyway.ru/17491234978842" target="_blank" rel="noopener">
+          <button class="cta-btn" id="mainCtaBtn"><span>📦 Хочу свой гайд (за 499 ₽🔥)</span></button>
+        </a>
+      </div>
+    </div>
+    <div class="block block6 fade-in" style="text-align:center;">
+      <b>Смотрите как выглядит гайд:</b><br>
+      <img src="img2.jpg" alt="Превью гайда" class="guide-img">
+      <div style="margin-top:18px;">
+        <a href="https://self.payanyway.ru/17491234978842" target="_blank" rel="noopener">
+          <button class="cta-btn" id="fixedCtaBtn"><span>📦 Хочу свой гайд (за 499 ₽🔥)</span></button>
+        </a>
+      </div>
+    </div>
+    <!-- Отзывы -->
+    <div class="reviews-block fade-in">
+      <div class="review">
+        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Мария" class="review-photo">
+        <div>
+          <div class="review-name">Мария, 28 лет</div>
+          <div class="review-text">«В шоке, почему в школах не учитывают психотип! Этот гайд реально меняет подход к обучению. Не пожалела ни капли.»</div>
+        </div>
+      </div>
+      <div class="review">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Игорь" class="review-photo">
+        <div>
+          <div class="review-name">Игорь, 34 года</div>
+          <div class="review-text">«Методика класс! Английский быстро прокачал до C1, теперь взялся за испанский — уже на уровне B1.»</div>
+        </div>
+      </div>
+      <div class="review">
+        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Светлана" class="review-photo">
+        <div>
+          <div class="review-name">Светлана, 41 год</div>
+          <div class="review-text">«Безумно благодарна, что случайно наткнулась на этот тест и гайд. Без них так и сидела бы с английским на месте.»</div>
+        </div>
+      </div>
+    </div>
+    <div class="author-block fade-in">
+      <img src="img1.jpg" alt="Автор" class="author-photo">
+      <div class="author-sign">👧 <b>Виктория</b><br>Если остались вопросы, пиши мне в Telegram: <b>@vikki_pch</b><br>Я всегда на связи и помогу!</div>
+    </div>
+  </div>
+  <!-- Canvas для эффекта золотого дыма с искорками -->
+  <canvas id="steamCanvas" style="position:fixed;left:0;top:0;width:100vw;height:100vh;pointer-events:none;z-index:999;"></canvas>
+  <!-- Фиксированная кнопка для мобильных -->
+  <div class="fixed-cta" id="fixedCta">
+    <a href="https://self.payanyway.ru/17491234978842" target="_blank" rel="noopener">
+      <button class="cta-btn" id="fixedCtaBtn"><span>📦 Хочу свой гайд (за 499 ₽🔥)</span></button>
+    </a>
+  </div>
+  <script>
+    // Анимация появления блоков при скролле
+    function onScrollFadeIn() {
+      document.querySelectorAll('.fade-in').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 60) {
+          el.classList.add('visible');
+        }
+      });
+    }
+    window.addEventListener('scroll', onScrollFadeIn);
+    window.addEventListener('DOMContentLoaded', onScrollFadeIn);
+
+    // Прогресс-бар чтения с процентами
+    window.addEventListener('scroll', function() {
+      const bar = document.getElementById('progressBar');
+      const percentDiv = document.getElementById('progressPercent');
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      bar.style.width = percent + '%';
+      percentDiv.textContent = 'Прогресс: ' + Math.round(percent) + '%';
+    });
+    // Инициализация процента при загрузке
+    window.addEventListener('DOMContentLoaded', function() {
+      const bar = document.getElementById('progressBar');
+      const percentDiv = document.getElementById('progressPercent');
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      bar.style.width = percent + '%';
+      percentDiv.textContent = 'Прогресс: ' + Math.round(percent) + '%';
+    });
+
+    // Фиксированная кнопка на мобилках
+    function showFixedCta() {
+      const fixedCta = document.getElementById('fixedCta');
+      if (window.innerWidth <= 700) {
+        if (window.scrollY > 350) {
+          fixedCta.style.display = 'block';
+        } else {
+          fixedCta.style.display = 'none';
+        }
+      } else {
+        fixedCta.style.display = 'none';
+      }
+    }
+    window.addEventListener('scroll', showFixedCta);
+    window.addEventListener('resize', showFixedCta);
+    window.addEventListener('DOMContentLoaded', showFixedCta);
+
+    // Микроанимация кнопки (пульсация через 7 секунд)
+    setTimeout(function() {
+      const btn = document.getElementById('mainCtaBtn');
+      if (btn) btn.classList.add('pulse');
+      const fixedBtn = document.getElementById('fixedCtaBtn');
+      if (fixedBtn) fixedBtn.classList.add('pulse');
+    }, 7000);
+
+    // Микроанимация отзывов при появлении в зоне видимости
+    window.addEventListener('DOMContentLoaded', function() {
+      const reviews = document.querySelectorAll('.review');
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('review-animate');
+              setTimeout(() => entry.target.classList.remove('review-animate'), 1200);
+            }
+          });
+        }, { threshold: 0.5 });
+        reviews.forEach(r => observer.observe(r));
+      }
+    });
+
+    // --- Оптимизированный эффект золотого дыма с искорками ---
+    const canvas = document.getElementById('steamCanvas');
+    const ctx = canvas.getContext('2d');
+    let clouds = [];
+    let sparks = [];
+    function resizeCanvas() {
+      if (canvas.width !== window.innerWidth || canvas.height !== window.innerHeight) {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    function drawSmokeCloud(x, y, size, alpha, t) {
+      ctx.save();
+      ctx.globalAlpha = alpha;
+      ctx.translate(x, y);
+      ctx.rotate(Math.sin(t/400 + x/200) * 0.2);
+      ctx.beginPath();
+      for (let a = 0; a < Math.PI * 2; a += Math.PI/24) {
+        let r = size * (0.85 + 0.28 * Math.sin(a*7 + t/300 + y/111) + 0.17 * Math.cos(a*13 + t/200 + x/99));
+        ctx.lineTo(Math.cos(a) * r, Math.sin(a) * r);
+      }
+      ctx.closePath();
+      let grad = ctx.createRadialGradient(0, 0, size*0.1, 0, 0, size);
+      grad.addColorStop(0, 'rgba(255, 255, 220, 0.92)');
+      grad.addColorStop(0.13, 'rgba(255, 240, 120, 0.68)');
+      grad.addColorStop(0.33, 'rgba(255, 220, 100, 0.44)');
+      grad.addColorStop(0.7, 'rgba(255, 200, 80, 0.22)');
+      grad.addColorStop(1, 'rgba(255, 200, 80, 0)');
+      ctx.fillStyle = grad;
+      ctx.filter = 'blur(1.5px)';
+      ctx.fill();
+      ctx.restore();
+    }
+
+    function drawClouds() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const now = Date.now();
+      clouds = clouds.filter(c => now - c.born < c.life);
+      sparks = sparks.filter(s => now - s.born < s.life);
+      // Ограничение на количество частиц
+      if (clouds.length > 180) clouds.splice(0, clouds.length - 180);
+      if (sparks.length > 80) sparks.splice(0, sparks.length - 80);
+      for (const c of clouds) {
+        const progress = (now - c.born) / c.life;
+        drawSmokeCloud(c.x, c.y - progress * c.rise, c.size * (1 + progress * 0.3), c.alpha * (1 - progress), now + c.seed);
+        drawSmokeCloud(c.x, c.y - progress * c.rise, c.size * 0.7, c.alpha * 0.25 * (1 - progress), now + c.seed * 1.3);
+      }
+      for (const s of sparks) {
+        const prog = (now - s.born) / s.life;
+        ctx.save();
+        ctx.globalAlpha = s.alpha * (1 - prog);
+        let grad = ctx.createRadialGradient(s.x, s.y, 0, s.x, s.y, s.size);
+        grad.addColorStop(0, 'rgba(255,255,220,1)');
+        grad.addColorStop(0.3, 'rgba(255,220,100,0.95)');
+        grad.addColorStop(0.7, 'rgba(255,200,80,0.22)');
+        grad.addColorStop(1, 'rgba(255,200,80,0)');
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.size, 0, Math.PI*2);
+        ctx.fillStyle = grad;
+        ctx.filter = 'blur(1.5px)';
+        ctx.fill();
+        ctx.restore();
+      }
+      requestAnimationFrame(drawClouds);
+    }
+    drawClouds();
+
+    function spawnCloud(x, y) {
+      for (let i = 0; i < 2 + Math.random(); i++) {
+        clouds.push({
+          x: x + (Math.random()-0.5)*10,
+          y: y + (Math.random()-0.5)*4,
+          size: 32 + Math.random()*16,
+          alpha: 0.7 + Math.random()*0.13,
+          born: Date.now(),
+          life: 900 + Math.random()*400,
+          rise: 70 + Math.random()*30,
+          seed: Math.random()*10000
+        });
+      }
+      for (let i = 0; i < 1; i++) {
+        sparks.push({
+          x: x + (Math.random()-0.5)*10,
+          y: y + (Math.random()-0.5)*6,
+          size: 1.2 + Math.random()*1.2,
+          alpha: 0.8 + Math.random()*0.1,
+          born: Date.now(),
+          life: 180 + Math.random()*80
+        });
+      }
+    }
+
+    function handleSteamEvent(e) {
+      let x, y;
+      if (e.touches && e.touches.length) {
+        x = e.touches[0].clientX;
+        y = e.touches[0].clientY;
+      } else {
+        x = e.clientX;
+        y = e.clientY;
+      }
+      spawnCloud(x, y);
+    }
+    window.addEventListener('mousemove', handleSteamEvent);
+    window.addEventListener('touchmove', handleSteamEvent, {passive:true});
+    window.addEventListener('touchstart', handleSteamEvent, {passive:true});
+
+    // --- Анимированный нейронный фон ---
+    const neuronCanvas = document.getElementById('neuronCanvas');
+    const neuronCtx = neuronCanvas.getContext('2d');
+    let neurons = [];
+    let links = [];
+    function resizeNeuronCanvas() {
+      neuronCanvas.width = window.innerWidth;
+      neuronCanvas.height = window.innerHeight;
+    }
+    resizeNeuronCanvas();
+    window.addEventListener('resize', resizeNeuronCanvas);
+    function createNeurons() {
+      neurons = [];
+      links = [];
+      const W = window.innerWidth, H = window.innerHeight;
+      const count = Math.floor(W * H / 32000) + 18;
+      for (let i = 0; i < count; i++) {
+        neurons.push({
+          x: Math.random() * W,
+          y: Math.random() * H,
+          r: 2.5 + Math.random() * 2.5,
+          dx: (Math.random()-0.5)*0.22,
+          dy: (Math.random()-0.5)*0.22,
+          color: Math.random() < 0.5 ? '#7ee7ff' : (Math.random() < 0.5 ? '#b388ff' : '#fffbe7'),
+          pulse: Math.random()*Math.PI*2
+        });
+      }
+      // Связи между ближайшими нейронами
+      for (let i = 0; i < neurons.length; i++) {
+        for (let j = i+1; j < neurons.length; j++) {
+          const a = neurons[i], b = neurons[j];
+          const dist = Math.hypot(a.x-b.x, a.y-b.y);
+          if (dist < 180) links.push([i, j, 0.25 + 0.75*(1-dist/180)]);
+        }
+      }
+    }
+    createNeurons();
+    window.addEventListener('resize', createNeurons);
+    function drawNeurons() {
+      neuronCtx.clearRect(0, 0, neuronCanvas.width, neuronCanvas.height);
+      // Линии
+      for (const [i, j, alpha] of links) {
+        const a = neurons[i], b = neurons[j];
+        neuronCtx.save();
+        neuronCtx.globalAlpha = 0.13 * alpha;
+        neuronCtx.strokeStyle = '#7ee7ff';
+        neuronCtx.lineWidth = 1.2;
+        neuronCtx.beginPath();
+        neuronCtx.moveTo(a.x, a.y);
+        neuronCtx.lineTo(b.x, b.y);
+        neuronCtx.stroke();
+        neuronCtx.restore();
+      }
+      // Узлы
+      for (const n of neurons) {
+        const pulse = 0.7 + 0.3 * Math.sin(Date.now()/600 + n.pulse);
+        neuronCtx.save();
+        neuronCtx.globalAlpha = 0.7;
+        neuronCtx.beginPath();
+        neuronCtx.arc(n.x, n.y, n.r * pulse, 0, Math.PI*2);
+        neuronCtx.fillStyle = n.color;
+        neuronCtx.shadowColor = n.color;
+        neuronCtx.shadowBlur = 8 * pulse;
+        neuronCtx.fill();
+        neuronCtx.restore();
+      }
+      // Движение
+      for (const n of neurons) {
+        n.x += n.dx;
+        n.y += n.dy;
+        if (n.x < 0 || n.x > neuronCanvas.width) n.dx *= -1;
+        if (n.y < 0 || n.y > neuronCanvas.height) n.dy *= -1;
+      }
+      requestAnimationFrame(drawNeurons);
+    }
+    drawNeurons();
+  </script>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();
+   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(103370933, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+   });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/103370933" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+</body>
+</html> 
