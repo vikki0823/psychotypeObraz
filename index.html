@@ -285,28 +285,6 @@
       opacity: 1;
       transform: translateY(0);
     }
-    /* Фиксированная кнопка на мобилках */
-    .fixed-cta {
-      display: none;
-      position: fixed;
-      left: 0; right: 0; bottom: 0;
-      z-index: 1000;
-      background: var(--color-btn);
-      box-shadow: 0 -2px 16px 0 rgba(255,140,66,0.13);
-      padding: 10px 0 10px 0;
-      text-align: center;
-      animation: slideUp 0.5s;
-    }
-    .fixed-cta .cta-btn {
-      margin: 0;
-      font-size: 1.08rem;
-      padding: 14px 18vw;
-      box-shadow: 0 2px 12px 0 rgba(255,140,66,0.18);
-    }
-    @keyframes slideUp {
-      from { transform: translateY(100%); }
-      to { transform: translateY(0); }
-    }
     /* Прогресс-бар чтения */
     .progress-bar {
       position: fixed;
@@ -456,7 +434,7 @@
       <img src="img2.jpg" alt="Превью гайда" class="guide-img">
       <div style="margin-top:18px;">
         <a href="https://self.payanyway.ru/17491234978842" target="_blank" rel="noopener">
-          <button class="cta-btn" id="fixedCtaBtn"><span>📦 Хочу свой гайд (за 499 ₽🔥)</span></button>
+          <button class="cta-btn" id="mainCtaBtn"><span>📦 Хочу свой гайд (за 499 ₽🔥)</span></button>
         </a>
       </div>
     </div>
@@ -491,12 +469,6 @@
   </div>
   <!-- Canvas для эффекта золотого дыма с искорками -->
   <canvas id="steamCanvas" style="position:fixed;left:0;top:0;width:100vw;height:100vh;pointer-events:none;z-index:999;"></canvas>
-  <!-- Фиксированная кнопка для мобильных -->
-  <div class="fixed-cta" id="fixedCta">
-    <a href="https://self.payanyway.ru/17491234978842" target="_blank" rel="noopener">
-      <button class="cta-btn" id="fixedCtaBtn"><span>📦 Хочу свой гайд (за 499 ₽🔥)</span></button>
-    </a>
-  </div>
   <script>
     // Анимация появления блоков при скролле
     function onScrollFadeIn() {
@@ -531,29 +503,10 @@
       percentDiv.textContent = 'Прогресс: ' + Math.round(percent) + '%';
     });
 
-    // Фиксированная кнопка на мобилках
-    function showFixedCta() {
-      const fixedCta = document.getElementById('fixedCta');
-      if (window.innerWidth <= 700) {
-        if (window.scrollY > 350) {
-          fixedCta.style.display = 'block';
-        } else {
-          fixedCta.style.display = 'none';
-        }
-      } else {
-        fixedCta.style.display = 'none';
-      }
-    }
-    window.addEventListener('scroll', showFixedCta);
-    window.addEventListener('resize', showFixedCta);
-    window.addEventListener('DOMContentLoaded', showFixedCta);
-
     // Микроанимация кнопки (пульсация через 7 секунд)
     setTimeout(function() {
       const btn = document.getElementById('mainCtaBtn');
       if (btn) btn.classList.add('pulse');
-      const fixedBtn = document.getElementById('fixedCtaBtn');
-      if (fixedBtn) fixedBtn.classList.add('pulse');
     }, 7000);
 
     // Микроанимация отзывов при появлении в зоне видимости
